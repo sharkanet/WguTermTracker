@@ -117,12 +117,74 @@ public class WGUAppRepository {
 */
 
     //get all matching FK
+    public LiveData<List<Course>> getCoursesWithFK(int fkId){
+        return mDb.CourseDao().getCoursesWithFK(fkId);
+    }
+    public LiveData<List<Assessment>> getAssessmentsWithFK(int fkId){
+        return mDb.AssessmentDao().getAssessmentsWithFK(fkId);
+    }
+    public LiveData<List<Note>> getNotesWithFK(int fkId){
+        return mDb.NoteDao().getNotesWithFK(fkId);
+    }
 
     //delete by id
+    public void deleteCourseById(int id){
+        executor.execute(()-> {
+            mDb.CourseDao().deleteCourseById(id);
+        });
+    }
+    public void deleteTermById(int id){
+        executor.execute(()-> mDb.TermDao().deleteTermById(id));
+    }
+    public void deleteAssessmentById(int id){
+        executor.execute(()-> {
+            mDb.AssessmentDao().deleteAssessmentById(id);
+        });
+    }
+    public void deleteNoteById(int id){
+        executor.execute(()-> {
+            mDb.NoteDao().deleteNoteById(id);
+        });
+    }
 
     //delete by object
+    public void deleteTerm(Term term){
+        executor.execute(()-> {
+            mDb.TermDao().deleteTerm(term);
+        });
+    }
+    public void deleteCourse(Course course){
+        executor.execute(()-> {
+            mDb.CourseDao().deleteCourse(course);
+        });
+    }
+    public void deleteAssessment(Assessment assessment){
+        executor.execute(()-> {
+            mDb.AssessmentDao().deleteAssessment(assessment);
+        });
+    }
+    public void deleteNote(Note note){
+        executor.execute(()-> {
+            mDb.NoteDao().deleteNote(note);
+        });
+    }
 
     //delete all matching FK
+    public void deleteCoursesInTerm(int id){
+        executor.execute(()-> {
+            mDb.CourseDao().deleteCoursesMatchingFK(id);
+        });
+    }
+    public void deleteAssessmentsInCourse(int id){
+        executor.execute(()-> {
+            mDb.AssessmentDao().deleteAssessmentsMatchingFK(id);
+        });
+    }
+    public void deleteNotesInCourse(int id){
+        executor.execute(()-> {
+            mDb.NoteDao().deleteNotesMatchingFK(id);
+        });
+    }
 
 
     //delete all

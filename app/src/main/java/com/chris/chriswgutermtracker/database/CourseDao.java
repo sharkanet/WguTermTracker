@@ -2,7 +2,6 @@ package com.chris.chriswgutermtracker.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Database;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -30,8 +29,8 @@ public interface CourseDao {
     LiveData<List<Course>> getAllCourses();
 
     //select all matching term id
-    @Query("SELECT * FROM terms WHERE termId_FK = :termId")
-    LiveData<List<Assessment>> getTermsWithFK(int termId);
+    @Query("SELECT * FROM courses WHERE termId_FK = :termId")
+    LiveData<List<Course>> getCoursesWithFK(int termId);
 
     //delete course by id
     @Query("DELETE FROM courses WHERE courseId = :id")
