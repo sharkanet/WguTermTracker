@@ -3,6 +3,7 @@ package com.chris.chriswgutermtracker.database;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import com.chris.chriswgutermtracker.utility.CourseStatus;
@@ -13,9 +14,10 @@ import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(
     tableName= "courses",
+    indices = {@Index("termId_FK")},
     foreignKeys = @ForeignKey(
             entity = Term.class,
-            parentColumns = "courseId",
+            parentColumns = "termId",
             childColumns = "termId_FK",
             onDelete = CASCADE
     )
@@ -27,15 +29,15 @@ public class Course {
     private String courseTitle;
     private Date courseStart;
     private Date courseEnd;
-    private CourseStatus courseStatus;
+    private String courseStatus;
     private String mentorName;
     private String mentorPhone;
     private String mentorEmail;
 
     private int termId_FK;
-    private Date courseAlertDate;
+  //  private Date courseAlertDate;
 
-    public Course(int courseId, String courseTitle, Date courseStart, Date courseEnd, CourseStatus courseStatus, String mentorName, String mentorPhone, String mentorEmail, int termId_fk) {
+    public Course(int courseId, String courseTitle, Date courseStart, Date courseEnd, String courseStatus, String mentorName, String mentorPhone, String mentorEmail, int termId_FK) {
         this.courseId = courseId;
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
@@ -44,13 +46,11 @@ public class Course {
         this.mentorName = mentorName;
         this.mentorPhone = mentorPhone;
         this.mentorEmail = mentorEmail;
-        this.termId_FK = termId_fk;
+        this.termId_FK = termId_FK;
     }
+
 @Ignore
-    public Course() {
-    }
-@Ignore
-    public Course(String courseTitle, Date courseStart, Date courseEnd, CourseStatus courseStatus, String mentorName, String mentorPhone, String mentorEmail, int termId_fk) {
+    public Course(String courseTitle, Date courseStart, Date courseEnd, String courseStatus, String mentorName, String mentorPhone, String mentorEmail, int termId_FK) {
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
         this.courseEnd = courseEnd;
@@ -58,7 +58,10 @@ public class Course {
         this.mentorName = mentorName;
         this.mentorPhone = mentorPhone;
         this.mentorEmail = mentorEmail;
-        this.termId_FK = termId_fk;
+        this.termId_FK = termId_FK;
+    }
+@Ignore
+    public Course() {
     }
 
     public int getCourseId() {
@@ -93,11 +96,11 @@ public class Course {
         this.courseEnd = courseEnd;
     }
 
-    public CourseStatus getCourseStatus() {
+    public String getCourseStatus() {
         return courseStatus;
     }
 
-    public void setCourseStatus(CourseStatus courseStatus) {
+    public void setCourseStatus(String courseStatus) {
         this.courseStatus = courseStatus;
     }
 
@@ -129,8 +132,8 @@ public class Course {
         return termId_FK;
     }
 
-    public void setTermId_FK(int termId_fk) {
-        this.termId_FK = termId_fk;
+    public void setTermId_FK(int termId_FK) {
+        this.termId_FK = termId_FK;
     }
 
     @Override
@@ -144,7 +147,7 @@ public class Course {
                 ", mentorName='" + mentorName + '\'' +
                 ", mentorPhone='" + mentorPhone + '\'' +
                 ", mentorEmail='" + mentorEmail + '\'' +
-                ", termId_fk=" + termId_FK +
+                ", termId_FK=" + termId_FK +
                 '}';
     }
 }

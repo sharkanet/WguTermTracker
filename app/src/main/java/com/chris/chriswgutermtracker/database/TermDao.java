@@ -19,12 +19,12 @@ public interface TermDao {
     //Update a term
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateTerm(Term term);
-/*
+
     //Retrieve a term(by id)
     @Query("SELECT * FROM terms WHERE termId = :id")
-    LiveData<Term> getTermById(int id);
+    Term getTermById(int id);
 
- */
+
 
     //Retrieve all terms
     @Query("SELECT * FROM terms ORDER BY termStart ASC")

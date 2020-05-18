@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="5dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_term_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/termtitle"
+        android:textSize="@dimen/recyclerViewTextSize"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_term_start"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/termstart"
+        android:textSize="@dimen/recyclerViewTextSize"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_term_title" />
+
+    <TextView
+        android:id="@+id/text_view_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" - "
+        android:textSize="@dimen/recyclerViewTextSize"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        app:layout_constraintStart_toEndOf="@+id/text_term_start"
+        app:layout_constraintTop_toBottomOf="@+id/text_term_title" />
+
+    <TextView
+        android:id="@+id/text_term_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:text="@string/termend"
+        android:textSize="@dimen/recyclerViewTextSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_term_start" />
+</androidx.constraintlayout.widget.ConstraintLayout>

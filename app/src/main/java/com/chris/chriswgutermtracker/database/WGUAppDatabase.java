@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {Note.class, Assessment.class, Course.class, Term.class}, version = 1)
+@Database(entities = {Note.class, Assessment.class, Course.class, Term.class},exportSchema = false, version = 2)
 @TypeConverters(DateConverter.class)
 public abstract class WGUAppDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "WGUAppDatabase.db";
@@ -22,7 +22,7 @@ public abstract class WGUAppDatabase extends RoomDatabase {
         if(instance == null){
             synchronized (LOCK){
                 if(instance == null){
-                    instance = Room.databaseBuilder(context.getApplicationContext(), WGUAppDatabase.class, DATABASE_NAME).build();
+                    instance = Room.databaseBuilder(context.getApplicationContext(), WGUAppDatabase.class, DATABASE_NAME).fallbackToDestructiveMigration().build();
                 }
             }
         }

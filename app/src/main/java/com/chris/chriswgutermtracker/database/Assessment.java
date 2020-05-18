@@ -3,6 +3,7 @@ package com.chris.chriswgutermtracker.database;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "assessments",
+        indices = {@Index("courseId_FK")},
         foreignKeys = @ForeignKey(
                 entity = Course.class,
                 parentColumns = "courseId",
@@ -25,11 +27,11 @@ public class Assessment {
     private Date assessmentDate;
     private String assessmentInfo;
     private String assessmentAlertTitle;
-    private String assessmentAlertDate;
+    private Date assessmentAlertDate;
 
     private int courseId_FK;
 @Ignore
-    public Assessment(String assessmentTitle, Date assessmentDate, String assessmentInfo, String assessmentAlertTitle, String assessmentAlertDate, int courseId_FK) {
+    public Assessment(String assessmentTitle, Date assessmentDate, String assessmentInfo, String assessmentAlertTitle, Date assessmentAlertDate, int courseId_FK) {
         this.assessmentTitle = assessmentTitle;
         this.assessmentDate = assessmentDate;
         this.assessmentInfo = assessmentInfo;
@@ -41,7 +43,7 @@ public class Assessment {
     public Assessment() {
     }
 
-    public Assessment(int assessmentId, String assessmentTitle, Date assessmentDate, String assessmentInfo, String assessmentAlertTitle, String assessmentAlertDate, int courseId_FK) {
+    public Assessment(int assessmentId, String assessmentTitle, Date assessmentDate, String assessmentInfo, String assessmentAlertTitle, Date assessmentAlertDate, int courseId_FK) {
         this.assessmentId = assessmentId;
         this.assessmentTitle = assessmentTitle;
         this.assessmentDate = assessmentDate;
@@ -91,11 +93,11 @@ public class Assessment {
         this.assessmentAlertTitle = assessmentAlertTitle;
     }
 
-    public String getAssessmentAlertDate() {
+    public Date getAssessmentAlertDate() {
         return assessmentAlertDate;
     }
 
-    public void setAssessmentAlertDate(String assessmentAlertDate) {
+    public void setAssessmentAlertDate(Date assessmentAlertDate) {
         this.assessmentAlertDate = assessmentAlertDate;
     }
 

@@ -4,6 +4,8 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.chris.chriswgutermtracker.utility.SampleData;
+
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -15,11 +17,12 @@ public class WGUAppRepository {
 
 ///////////////////////////////////////////////////////////////////////////////////
 //objects retrieved from db
+    //some might be unnecessary
     //full tables
     private LiveData<List<Term>> mTerms;
-    private LiveData<List<Course>> mCourses;
-    private LiveData<List<Assessment>> mAssessments;
-    private LiveData<List<Note>> mNotes;
+    private LiveData<List<Course>> mCourses; //unneeded?
+    private LiveData<List<Assessment>> mAssessments; //unneeded?
+    private LiveData<List<Note>> mNotes; //unneeded?
 
     //tables matching FK
     private LiveData<List<Course>> termCourses;
@@ -108,13 +111,15 @@ public class WGUAppRepository {
         });
     }
 
-/*//not needed i think?
+
     //get by id
-    public LiveData<Term> getTermById(int id){
-            return mDb.TermDao().getTermById(id);
+    public Term getTermById(int id){
+
+                      return mDb.TermDao().getTermById(id);
+
     }
 
-*/
+
 
     //get all matching FK
     public LiveData<List<Course>> getCoursesWithFK(int fkId){
@@ -209,8 +214,27 @@ public class WGUAppRepository {
         });
     }
 
+    public Integer getCourseCountWithFK(int id){
+        return mDb.CourseDao().getCourseCountWithFK(id);
+    }
 ///////////////////////////////////////////////////////////////////////////////////
 
+//add sample data
+    public void clearDBAndAddSampleData(){
+        executor.execute(()-> {
+            mDb.TermDao().deleteAllTerms();
+            mDb.TermDao().insertTerm(SampleData.term1);
+            mDb.TermDao().insertTerm(SampleData.term2);
+            mDb.TermDao().insertTerm(SampleData.term3);
+            mDb.CourseDao().insertCourse(SampleData.course1);
+            mDb.AssessmentDao().insertAssessment(SampleData.assessment1);
+            mDb.NoteDao().insertNote(SampleData.note1);
 
+        });
+        System.out.println("reset db");
+    }
 
+    public LiveData<List<Term>> getMTerms() {
+        return mTerms;
+    }
 }

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">ChrisWguTermTracker</string>
+    <string name="wgu_term_tracker">WGU Term Tracker</string>
+    <string name="terms">Terms</string>
+    <string name="fill_with_sample_data">Reset DB to Sample Data</string>
+    <string name="title_activity_terms">Terms</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="termtitle">TermTitle</string>
+    <string name="termstart">TermStart</string>
+    <string name="termend">TermEnd</string>
+    <string name="termtitle2">TermTitle :</string>
+    <string name="termstart2">TermStart :</string>
+    <string name="termend2">TermEnd :</string>
+    <string name="courses">Courses</string>
+    <string name="delete">Delete</string>
 </resources>

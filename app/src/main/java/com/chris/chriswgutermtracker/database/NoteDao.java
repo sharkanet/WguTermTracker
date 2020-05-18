@@ -19,11 +19,11 @@ public interface NoteDao {
     //update
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateNote(Note note);
-/*
+
     //select by id
     @Query("SELECT * FROM notes WHERE noteId = :id")
-    LiveData<Assessment> getNoteById(int id);
-*/
+    Note getNoteById(int id);
+
     //select all
     @Query("SELECT * FROM notes")
     LiveData<List<Note>> getAllNotes();

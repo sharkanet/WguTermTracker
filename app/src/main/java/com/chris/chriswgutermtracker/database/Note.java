@@ -2,11 +2,14 @@ package com.chris.chriswgutermtracker.database;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "notes",
+        indices = {@Index("courseId_FK")},
     foreignKeys = @ForeignKey(entity = Course.class,
             parentColumns = "courseId",
             childColumns = "courseId_FK",
@@ -25,12 +28,12 @@ public class Note {
         this.noteText = noteText;
         this.courseId_FK = courseId_FK;
     }
-
+@Ignore
     public Note(String noteText, int courseId_FK) {
         this.noteText = noteText;
         this.courseId_FK = courseId_FK;
     }
-
+@Ignore
     public Note() {
     }
 

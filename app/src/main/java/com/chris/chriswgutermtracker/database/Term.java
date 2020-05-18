@@ -2,11 +2,13 @@ package com.chris.chriswgutermtracker.database;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "terms")
+@Entity(tableName = "terms"
+)
 public class Term {
     @PrimaryKey (autoGenerate = true)
     private int termId;

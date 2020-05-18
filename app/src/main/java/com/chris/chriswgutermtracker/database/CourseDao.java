@@ -19,11 +19,14 @@ public interface CourseDao {
     //Update course
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateCourse (Course course);
-/*
+
     //Get course by id
     @Query("SELECT * FROM courses WHERE courseId = :id")
-    LiveData<Course> getCourseById(int id);
-*/
+    Course getCourseById(int id);
+
+    @Query("SELECT COUNT(courseId) FROM courses WHERE termId_FK = :termId")
+    Integer getCourseCountWithFK(int termId);
+
     //get all courses
     @Query("SELECT * FROM courses ORDER BY courseStart ASC")
     LiveData<List<Course>> getAllCourses();

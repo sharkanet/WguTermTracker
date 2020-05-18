@@ -19,11 +19,11 @@ public interface AssessmentDao {
     //update
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateAssessment(Assessment assessment);
-/*
+
     //select by id
     @Query("SELECT * FROM assessments WHERE assessmentId = :id")
-    LiveData<Assessment> getAssessById(int id);
-*/
+    Assessment getAssessmentById(int id);
+
     //select all
     @Query("SELECT * FROM assessments")
     LiveData<List<Assessment>> getAllAssessments();
