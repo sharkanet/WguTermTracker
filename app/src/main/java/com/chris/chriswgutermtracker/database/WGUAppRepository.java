@@ -3,6 +3,7 @@ package com.chris.chriswgutermtracker.database;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.chris.chriswgutermtracker.utility.SampleData;
 
@@ -24,10 +25,15 @@ public class WGUAppRepository {
     private LiveData<List<Assessment>> mAssessments; //unneeded?
     private LiveData<List<Note>> mNotes; //unneeded?
 
+
+
     //tables matching FK
     private LiveData<List<Course>> termCourses;
     private LiveData<List<Assessment>> courseAssessments;
     private LiveData<List<Note>> courseNotes;
+
+    //
+    private Term lastSelectedTerm;
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -114,9 +120,16 @@ public class WGUAppRepository {
 
     //get by id
     public Term getTermById(int id){
-
                       return mDb.TermDao().getTermById(id);
-
+    }
+    public void setTermById(int id){
+        lastSelectedTerm = getTermById(id);
+    }
+    public Term getSelectedTerm(){
+        return lastSelectedTerm;
+    }
+    public Course getCourseById(int id) {
+        return mDb.CourseDao().getCourseById(id);
     }
 
 
@@ -130,6 +143,15 @@ public class WGUAppRepository {
     }
     public LiveData<List<Note>> getNotesWithFK(int fkId){
         return mDb.NoteDao().getNotesWithFK(fkId);
+    }
+    public void setTermCourses(int fkId){
+        termCourses = getCoursesWithFK(fkId);
+    }
+    public void setCourseAssessments(int fkId){
+        courseAssessments = getAssessmentsWithFK(fkId);
+    }
+    public void setCourseNotes(int fkId){
+        courseNotes = getNotesWithFK(fkId);
     }
 
     //delete by id
@@ -237,4 +259,9 @@ public class WGUAppRepository {
     public LiveData<List<Term>> getMTerms() {
         return mTerms;
     }
+    public LiveData<List<Course>> getTermCourses() {
+        return termCourses;
+    }
+
+
 }

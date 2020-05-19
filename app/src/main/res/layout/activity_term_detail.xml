@@ -66,13 +66,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:background="@null"
-        android:layout_marginBottom="10dp"
-        android:textSize="@dimen/detailsViewTextSize"
-        android:inputType="textCapWords"
         android:hint="@string/termtitle"
+        android:importantForAutofill="no"
+        android:inputType="textCapWords"
+        android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toTopOf="@+id/text_term_detail_start_field"
-        app:layout_constraintStart_toEndOf="@+id/text_term_detail_title"
-        android:importantForAutofill="no" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="@+id/text_term_detail_title" />
 
     <TextView
         android:id="@+id/text_term_detail_start_field"
@@ -80,14 +81,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:layout_marginBottom="10dp"
-        android:textSize="@dimen/detailsViewTextSize"
-
         android:hint="@string/termstart"
+
+        android:importantForAutofill="no"
+        android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_term_detail_start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="@+id/text_term_detail_start"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <TextView
         android:id="@+id/text_term_detail_end"
@@ -104,13 +107,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
-        android:layout_marginBottom="10dp"
-        android:textSize="@dimen/detailsViewTextSize"
+        android:layout_marginTop="4dp"
 
         android:hint="@string/termend"
-        app:layout_constraintStart_toEndOf="@+id/text_term_detail_end"
-        app:layout_constraintTop_toBottomOf="@+id/text_term_detail_start_field"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="@+id/text_term_detail_end"
+        app:layout_constraintTop_toBottomOf="@+id/text_term_detail_start_field" />
 
     <Button
         android:id="@+id/button_to_courses"
@@ -119,9 +124,10 @@
         android:text="@string/courses"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_term_save"

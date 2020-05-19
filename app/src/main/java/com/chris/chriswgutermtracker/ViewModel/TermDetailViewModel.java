@@ -32,6 +32,8 @@ public class TermDetailViewModel extends AndroidViewModel {
     }
     public void loadTerm(int id){
         executor.execute(()->{
+//            repo.setTermById(id);
+//            Term termEditing = repo.getSelectedTerm();
             Term termEditing = repo.getTermById(id);
             Integer coursesInTerm = repo.getCourseCountWithFK(id);
             term.postValue(termEditing);
@@ -40,15 +42,18 @@ public class TermDetailViewModel extends AndroidViewModel {
     }
     public void save(String title, Date start, Date end){
         Term newTerm = term.getValue();
+     //   System.out.println(newTerm);
         if(newTerm == null){
             newTerm = new Term(title.trim(),start,end);
+            repo.insertTerm(newTerm);
         } else {
             newTerm.setTermTitle(title.trim());
             newTerm.setTermEnd(end);
             newTerm.setTermStart(start);
+            repo.updateTerm(newTerm);
         }
-        //System.out.println(newTerm);
-        repo.insertTerm(newTerm);
+        System.out.println(newTerm);
+
     }
 
     public void delete() {

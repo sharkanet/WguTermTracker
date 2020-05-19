@@ -20,4 +20,21 @@
     <string name="termend2">TermEnd :</string>
     <string name="courses">Courses</string>
     <string name="delete">Delete</string>
+    <string name="coursetitle">Course Title</string>
+    <string name="coursestart">Course Start</string>
+    <string name="courseend">Course End</string>
+    <string name="course_status">Course Status</string>
+    <string name="course_mentor_email">Mentor Email</string>
+    <string name="mentor_phone">Mentor Phone</string>
+    <string name="mentor_name">Mentor Name</string>
+    <string name="dash">-</string>
+    <string name="coursetitle2">courseTitle :</string>
+    <string name="coursestart2">courseStart :</string>
+    <string name="courseend2">courseEnd :</string>
+    <string name="assessments">Assessments</string>
+    <string name="notes">Notes</string>
+    <string name="coursestatus2">Course Status :</string>
+    <string name="mentorname2">Mentor Name :</string>
+    <string name="mentorphone2">Mentor Phone :</string>
+    <string name="mentoremail2">Mentor Email :</string>
 </resources>
