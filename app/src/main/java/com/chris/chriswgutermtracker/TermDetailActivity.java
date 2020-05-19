@@ -122,21 +122,25 @@ public class TermDetailActivity extends AppCompatActivity {
                 termEndField.setText(sdf.format(term.getTermEnd()));
             }
         });
-
         Bundle extras = getIntent().getExtras();
         if(extras == null){
             setTitle("Add Term");
             newTermBool = true;
             setTermEndField();
             setTermStartField();
+            buttonToCourses.setVisibility(View.GONE);
         } else{
             termId = extras.getInt(TERM_ID_KEY);
             viewModel.loadTerm(termId);
         }
-
     }
 
-//    private void setFields(){
+    @Override
+    protected void onResume() {
+        viewModel.refreshCount();
+        super.onResume();
+    }
+    //    private void setFields(){
 //        if(!newTermBool){
 //
 //        }else {
@@ -175,10 +179,11 @@ public class TermDetailActivity extends AppCompatActivity {
     private void deleteTerm(View v) {
         if(!newTermBool){
             if(noCourses()){
-             viewModel.delete();
-                Toast toast = Toast.makeText(getApplicationContext(),"Term Deleted", Toast.LENGTH_SHORT);
-                toast.show();
-                finish();
+                if(viewModel.delete()){
+                    Toast toast = Toast.makeText(getApplicationContext(),"Term Deleted", Toast.LENGTH_SHORT);
+                    toast.show();
+                    finish();
+                }
             } else{
                 Toast toast = Toast.makeText(getApplicationContext(),"Term Has Courses", Toast.LENGTH_SHORT);
                 toast.show();
@@ -198,6 +203,6 @@ public class TermDetailActivity extends AppCompatActivity {
         }
     }
     private boolean noCourses(){
-        return viewModel.noCourses();
+        return viewModel.noCourses(termId);
     }
 }

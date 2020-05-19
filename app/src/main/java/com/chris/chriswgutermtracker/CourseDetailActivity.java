@@ -9,15 +9,18 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chris.chriswgutermtracker.ViewModel.CourseDetailViewModel;
 import com.chris.chriswgutermtracker.databinding.ActivityCourseDetailBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import static android.view.View.GONE;
 import static com.chris.chriswgutermtracker.utility.Constants.COURSE_ID_KEY;
 import static com.chris.chriswgutermtracker.utility.Constants.TERM_ID_KEY;
 
@@ -52,7 +55,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         fabDelete = binding.fabCourseDelete;
         fabSave = binding.fabCourseSave;
         calendarEnd = Calendar.getInstance();
-        calendarStart =Calendar.getInstance();
+        calendarStart = Calendar.getInstance();
 
         startListener = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -60,7 +63,7 @@ public class CourseDetailActivity extends AppCompatActivity {
                 calendarStart.set(Calendar.YEAR,year);
                 calendarStart.set(Calendar.MONTH, month);
                 calendarStart.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                courseStart.setText(sdf.format(calendarStart.getTime()));
+                setStartField();
             }
         };
         endListener = new DatePickerDialog.OnDateSetListener() {
@@ -69,7 +72,7 @@ public class CourseDetailActivity extends AppCompatActivity {
                 calendarEnd.set(Calendar.YEAR,year);
                 calendarEnd.set(Calendar.MONTH, month);
                 calendarEnd.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                courseEnd.setText(sdf.format(calendarStart.getTime()));
+                setEndField();
             }
         };
         courseStart.setOnClickListener(v -> {
@@ -95,6 +98,7 @@ public class CourseDetailActivity extends AppCompatActivity {
             toNotes();
         });
 
+
         initViewModel();
     }
 
@@ -118,10 +122,20 @@ public class CourseDetailActivity extends AppCompatActivity {
             termIdFK = extras.getInt(TERM_ID_KEY);
             courseId = extras.getInt(COURSE_ID_KEY,0);
             if(courseId == 0){
-                System.out.println("new course");
+                setStartField();
+                setEndField();
+                noteButton.setVisibility(GONE);
+                assessmentButton.setVisibility(GONE);
+               // System.out.println("new course");
             }
             viewModel.loadCourse(courseId);
         }
+    }
+    private void setStartField(){
+        courseStart.setText(sdf.format(calendarStart.getTime()));
+    }
+    private void setEndField(){
+        courseEnd.setText(sdf.format(calendarEnd.getTime()));
     }
 
     private void toNotes() {
@@ -131,10 +145,22 @@ public class CourseDetailActivity extends AppCompatActivity {
     }
 
     private void deleteCourse() {
-        //implement
+        if (courseId != 0) {
+            viewModel.delete();
+            Toast toast = Toast.makeText(getApplicationContext(), "Course Deleted", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
-    private void saveCourse() {
-        //implement
+    private void saveCourse(){
+        try{
+            viewModel.save(courseTitle.getText().toString(), sdf.parse(courseStart.getText().toString()), sdf.parse(courseEnd.getText().toString()),
+                    courseStatus.getText().toString(), mentorName.getText().toString(), mentorPhone.getText().toString(),mentorEmail.getText().toString(),
+                    termIdFK);
+            Toast toast = Toast.makeText(getApplicationContext(),"Term Saved", Toast.LENGTH_SHORT);
+            toast.show();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

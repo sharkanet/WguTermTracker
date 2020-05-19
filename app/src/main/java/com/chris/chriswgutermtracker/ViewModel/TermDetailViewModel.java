@@ -20,6 +20,7 @@ public class TermDetailViewModel extends AndroidViewModel {
     private MutableLiveData<Integer> courses = new MutableLiveData<>();
     private WGUAppRepository repo;
     private Executor executor = Executors.newSingleThreadExecutor();
+    private int termId;
 
 
     public TermDetailViewModel(@NonNull Application application) {
@@ -31,12 +32,16 @@ public class TermDetailViewModel extends AndroidViewModel {
         return term;
     }
     public void loadTerm(int id){
+        termId = id;
         executor.execute(()->{
 //            repo.setTermById(id);
 //            Term termEditing = repo.getSelectedTerm();
             Term termEditing = repo.getTermById(id);
-            Integer coursesInTerm = repo.getCourseCountWithFK(id);
             term.postValue(termEditing);
+        });
+        executor.execute(()->{
+            //   repo.setLastSelectedTermCourseCount(id);
+            Integer coursesInTerm = repo.getCourseCountWithFK(id);
             courses.postValue(coursesInTerm);
         });
     }
@@ -56,12 +61,22 @@ public class TermDetailViewModel extends AndroidViewModel {
 
     }
 
-    public void delete() {
+    public boolean delete() {
         repo.deleteTerm(term.getValue());
+        return true;
+
     }
-    public boolean noCourses(){
+    public void refreshCount(){
+        executor.execute(()->{
+            //   repo.setLastSelectedTermCourseCount(id);
+            Integer coursesInTerm = repo.getCourseCountWithFK(termId);
+            courses.postValue(coursesInTerm);
+        });
+    }
+    public boolean noCourses(int id){
+
         Integer count = courses.getValue();
-       if(count.intValue() == 0)
+       if(count == 0)
           return true;
         else
           return false;
