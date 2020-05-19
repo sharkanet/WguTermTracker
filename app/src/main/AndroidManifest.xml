@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CourseDetailActivity"
+            android:label="Course Details Editor" />
+        <activity android:name=".CoursesActivity"
+            android:label="Courses" />
         <activity
             android:name=".TermDetailActivity"
-            android:label="Term Details Editor"></activity>
+            android:label="Term Details Editor" />
         <activity
             android:name=".TermsActivity"
             android:label="@string/title_activity_terms"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

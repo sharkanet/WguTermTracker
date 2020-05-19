@@ -31,7 +31,7 @@
         android:id="@+id/text_view_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" - "
+        android:text="@string/dash"
         android:textSize="@dimen/recyclerViewTextSize"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         app:layout_constraintStart_toEndOf="@+id/text_term_start"

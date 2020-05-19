@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourseDetailActivity">
+    <!--
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_course_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+    -->
+
+    <TextView
+        android:id="@+id/text_course_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:layout_marginStart="4dp"
+        android:text="@string/coursetitle2"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="@+id/text_course_detail_title_field"
+
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+    <TextView
+        android:id="@+id/text_view_detail_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" - "
+        android:textSize="@dimen/recyclerViewTextSize"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        app:layout_constraintStart_toEndOf="@+id/text_course_detail_start"
+        app:layout_constraintTop_toBottomOf="@+id/text_course_detail_title" />
+-->
+
+    <TextView
+        android:id="@+id/text_course_detail_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:layout_marginStart="4dp"
+        android:text="@string/coursestart2"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="@+id/text_course_detail_start_field"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/text_course_detail_title_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:hint="@string/coursetitle"
+        android:importantForAutofill="no"
+        android:inputType="textCapWords"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toTopOf="@+id/text_course_detail_start_field"
+        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field" />
+
+    <TextView
+        android:id="@+id/text_course_detail_start_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:layout_marginBottom="10dp"
+
+        android:hint="@string/coursestart"
+        android:importantForAutofill="no"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toEndOf="@+id/text_course_detail_start"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
+
+    <TextView
+        android:id="@+id/text_course_detail_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:text="@string/courseend2"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="@+id/text_course_detail_end_field"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_course_detail_end_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:hint="@string/courseend"
+
+        android:importantForAutofill="no"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_course_detail_start_field" />
+
+     <TextView
+        android:id="@+id/text_course_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:text="@string/coursestatus2"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="@+id/text_course_status_field"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/text_course_status_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:background="@null"
+        android:hint="@string/course_status"
+        android:importantForAutofill="no"
+        android:inputType="textCapWords"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_course_detail_end_field" />
+
+    <TextView
+        android:id="@+id/text_course_mentor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:text="@string/mentorname2"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="@+id/text_course_mentor_name_field"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/text_course_mentor_name_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:background="@null"
+        android:hint="@string/mentor_name"
+        android:importantForAutofill="no"
+        android:inputType="textCapWords"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_course_status_field" />
+
+    <TextView
+        android:id="@+id/text_course_mentor_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:text="@string/mentorphone2"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="@+id/text_course_mentor_phone_field"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/text_course_mentor_phone_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:background="@null"
+        android:hint="@string/mentor_phone"
+        android:importantForAutofill="no"
+        android:inputType="phone"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_course_mentor_name_field" />
+
+    <TextView
+        android:id="@+id/text_course_mentor_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:text="@string/mentoremail2"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintBottom_toBottomOf="@+id/text_course_mentor_email_field"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/text_course_mentor_email_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:background="@null"
+        android:hint="@string/course_mentor_email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        android:textSize="@dimen/detailsViewTextSize"
+        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_course_mentor_phone_field" />
+
+
+    <Button
+        android:id="@+id/button_to_assessments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/assessments"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.737" />
+
+    <Button
+        android:id="@+id/button_to_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_course_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/fabBackgroundTint"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/ic_save" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_course_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/fabBackgroundTint"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/ic_delete" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

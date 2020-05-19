@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,8 @@ import java.util.Locale;
 import static com.chris.chriswgutermtracker.utility.Constants.TERM_ID_KEY;
 
 public class TermDetailActivity extends AppCompatActivity {
+    private int termId;
+
     private EditText termTitleField;
     private TextView termStartField;
     private TextView termEndField;
@@ -90,17 +93,24 @@ public class TermDetailActivity extends AppCompatActivity {
         });
         fabSaveTerm.setOnClickListener(v -> {
             saveTerm();
+            finish();
         });
-        fabDeleteTerm.setOnClickListener(v -> {
-            deleteTerm(v);
-
-        });
+        fabDeleteTerm.setOnClickListener(this::deleteTerm);
+        buttonToCourses.setOnClickListener(this::toCourses);
 
 
         initViewModel();
         //setFields();
+      //  setWidths();
     }
 
+    private void setWidths() {
+        TextView termTitle = binding.textTermDetailTitle;
+        TextView termStart = binding.textTermDetailStart;
+        TextView termEnd = binding.textTermDetailEnd;
+        termEnd.setWidth(termStart.getWidth());
+        termTitle.setWidth(termStart.getWidth());
+    }
 
 
     private void initViewModel() {
@@ -120,7 +130,7 @@ public class TermDetailActivity extends AppCompatActivity {
             setTermEndField();
             setTermStartField();
         } else{
-            int termId = extras.getInt(TERM_ID_KEY);
+            termId = extras.getInt(TERM_ID_KEY);
             viewModel.loadTerm(termId);
         }
 
@@ -155,10 +165,9 @@ public class TermDetailActivity extends AppCompatActivity {
     }
     private void saveTerm() {
         try{
-             viewModel.save(termTitleField.getText().toString(), sdf.parse(termStartField.getText().toString()), sdf.parse(termEndField.getText().toString()));
+            viewModel.save(termTitleField.getText().toString(), sdf.parse(termStartField.getText().toString()), sdf.parse(termEndField.getText().toString()));
             Toast toast = Toast.makeText(getApplicationContext(),"Term Saved", Toast.LENGTH_SHORT);
             toast.show();
-             finish();
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -174,6 +183,18 @@ public class TermDetailActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(),"Term Has Courses", Toast.LENGTH_SHORT);
                 toast.show();
             }
+        } else{
+            finish();
+        }
+    }
+    private void toCourses(View view) {
+        if(!newTermBool){
+            Intent intent = new Intent(TermDetailActivity.this, CoursesActivity.class);
+            // System.out.println(term + " clicked" + System.getProperty("line.separator") + "(IMPLEMENT SOMETHING)");
+            intent.putExtra(TERM_ID_KEY, termId);
+            startActivity(intent);
+        } else {
+
         }
     }
     private boolean noCourses(){
