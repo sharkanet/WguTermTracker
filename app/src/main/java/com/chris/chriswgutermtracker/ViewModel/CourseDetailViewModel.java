@@ -50,4 +50,7 @@ public class CourseDetailViewModel extends AndroidViewModel {
             repo.updateCourse(newCourse);
         }
     }
+    public void delete(){
+        repo.deleteCourse(course.getValue());
+    }
 }

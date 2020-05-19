@@ -1,5 +1,6 @@
 package com.chris.chriswgutermtracker;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -56,6 +57,15 @@ public class CoursesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                coursesViewModel.refreshLastSelectedTermCourseCount(termIdFK);
+//                finish();
+//            }
+//        };
+//        getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     private void initRecyclerView() {

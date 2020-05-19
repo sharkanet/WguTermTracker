@@ -235,8 +235,12 @@ public class WGUAppRepository {
             mDb.TermDao().deleteAllTerms();
         });
     }
-
+//    private Integer lastSelectedTermCourseCount;
+//    public void setLastSelectedTermCourseCount(int id){
+//        lastSelectedTermCourseCount = mDb.CourseDao().getCourseCountWithFK(id);
+//    }
     public Integer getCourseCountWithFK(int id){
+       // return lastSelectedTermCourseCount;
         return mDb.CourseDao().getCourseCountWithFK(id);
     }
 ///////////////////////////////////////////////////////////////////////////////////
