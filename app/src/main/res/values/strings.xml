@@ -37,4 +37,21 @@
     <string name="mentorname2">Mentor Name :</string>
     <string name="mentorphone2">Mentor Phone :</string>
     <string name="mentoremail2">Mentor Email :</string>
+    <string name="assessmentend">Assessment Alert Day</string>
+    <string name="assessmentstart">Assessment Day</string>
+    <string name="assessmenttitle">Assessment Title</string>
+    <string name="assessmenttitle2">Assessment Title :</string>
+    <string name="assessmentstart2">Assessment Time :</string>
+    <string name="assessmentend2">Assessment Alert Time</string>
+    <string name="assessmentstatus2">Assessment Info :</string>
+    <string name="assessment_status">Assessment Info</string>
+    <string name="setAlert">Set Alert</string>
+    <string name="assessmentendTime">Assessment Alert Time</string>
+    <string name="assessmentstartTime">Assessment Time</string>
+    <string name="notestart">Note Text</string>
+    <string name="noteId">Note ID</string>
+    <string name="noteText">Note Text</string>
+    <string name="noteTitle2">Note ID :</string>
+    <string name="channel_name">Notifications</string>
+    <string name="channel_description">Notifications</string>
 </resources>

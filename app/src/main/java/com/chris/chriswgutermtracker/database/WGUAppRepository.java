@@ -131,6 +131,12 @@ public class WGUAppRepository {
     public Course getCourseById(int id) {
         return mDb.CourseDao().getCourseById(id);
     }
+    public Assessment getAssessmentById(int id) {
+        return mDb.AssessmentDao().getAssessmentById(id);
+    }
+    public Note getNoteById(int id) {
+        return  mDb.NoteDao().getNoteById(id);
+    }
 
 
 
@@ -266,6 +272,11 @@ public class WGUAppRepository {
     public LiveData<List<Course>> getTermCourses() {
         return termCourses;
     }
+    public LiveData<List<Assessment>> getCourseAssessments(){
+        return courseAssessments;
+    }
+    public LiveData<List<Note>> getCourseNotes() { return  courseNotes;}
+
 
 
 }

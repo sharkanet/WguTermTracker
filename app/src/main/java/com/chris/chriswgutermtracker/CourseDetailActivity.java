@@ -1,10 +1,18 @@
 package com.chris.chriswgutermtracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -13,18 +21,23 @@ import android.widget.Toast;
 
 import com.chris.chriswgutermtracker.ViewModel.CourseDetailViewModel;
 import com.chris.chriswgutermtracker.databinding.ActivityCourseDetailBinding;
+import com.chris.chriswgutermtracker.utility.NotificationAlerts;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import static android.view.View.GONE;
 import static com.chris.chriswgutermtracker.utility.Constants.COURSE_ID_KEY;
+import static com.chris.chriswgutermtracker.utility.Constants.NOTIFICATION_TEXT;
+import static com.chris.chriswgutermtracker.utility.Constants.NOTIFICATION_TITLE;
 import static com.chris.chriswgutermtracker.utility.Constants.TERM_ID_KEY;
 
 public class CourseDetailActivity extends AppCompatActivity {
+    public static final String NOTIFICATION = "notification_key";
     private int termIdFK, courseId;
     private TextView courseStart, courseEnd;
     private EditText courseTitle, courseStatus, mentorName, mentorPhone, mentorEmail;
@@ -139,9 +152,19 @@ public class CourseDetailActivity extends AppCompatActivity {
     }
 
     private void toNotes() {
+        if(courseId != 0){
+            Intent intent =new Intent( CourseDetailActivity.this, NotesActivity.class);
+            intent.putExtra(COURSE_ID_KEY, courseId);
+            startActivity(intent);
+        }
     }
 
     private void toAssessments() {
+        if(courseId != 0){
+            Intent intent =new Intent( CourseDetailActivity.this, AssessmentsActivity.class);
+            intent.putExtra(COURSE_ID_KEY, courseId);
+            startActivity(intent);
+        }
     }
 
     private void deleteCourse() {
@@ -160,6 +183,72 @@ public class CourseDetailActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(),"Term Saved", Toast.LENGTH_SHORT);
             toast.show();
         } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.course_detail_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.alert_start:
+                //implement
+                setStartAlert();
+                return true;
+            case R.id.alert_end:
+                //implement
+                setEndAlert();
+                return true;
+            default:
+               return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void setStartAlert(){
+        try{
+          //  String alertDateString = courseTitle.getText().toString();
+         //   String assessmentTimeString = assessmentDate.getText().toString().concat(" ").concat(assessmentTime.getText().toString());
+            Date alertDate = sdf.parse(courseStart.getText().toString());
+            String alertTitle = "Course Start Alert";
+            String alertText = courseTitle.getText().toString().concat(" starts at ").concat(alertDate.toString());
+            Intent intent = new Intent(CourseDetailActivity.this, NotificationAlerts.class);
+            intent.putExtra(NOTIFICATION_TITLE, alertTitle);
+            intent.putExtra(NOTIFICATION_TEXT, alertText);
+        //    intent.putExtra(NOTIFICATION, notification);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(CourseDetailActivity.this, courseId*1000+1, intent, PendingIntent.FLAG_ONE_SHOT);
+            AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, alertDate.getTime(), pendingIntent);
+            Toast.makeText(CourseDetailActivity.this, "Alarm set for "+ alertDate + System.lineSeparator() + alertTitle + System.lineSeparator()+ alertText, Toast.LENGTH_LONG).show();
+            //   System.out.println("Alarm set: " + alertTitle +"\n" +alertText);
+
+        } catch (ParseException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void setEndAlert(){
+        try{
+            //  String alertDateString = courseTitle.getText().toString();
+            //   String assessmentTimeString = assessmentDate.getText().toString().concat(" ").concat(assessmentTime.getText().toString());
+            Date alertDate = sdf.parse(courseEnd.getText().toString());
+            String alertTitle = "Course End Alert";
+            String alertText = courseTitle.getText().toString().concat(" ends at ").concat(alertDate.toString());
+            Intent intent = new Intent(CourseDetailActivity.this, NotificationAlerts.class);
+            intent.putExtra(NOTIFICATION_TITLE, alertTitle);
+            intent.putExtra(NOTIFICATION_TEXT, alertText);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(CourseDetailActivity.this, courseId*1000+2, intent, PendingIntent.FLAG_ONE_SHOT);
+            AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, alertDate.getTime(), pendingIntent);
+            Toast.makeText(CourseDetailActivity.this, "Alarm set for "+ alertDate + System.lineSeparator() + alertTitle + System.lineSeparator()+ alertText, Toast.LENGTH_LONG).show();
+            //   System.out.println("Alarm set: " + alertTitle +"\n" +alertText);
+
+        } catch (ParseException e){
             e.printStackTrace();
         }
     }

@@ -1,10 +1,7 @@
 package com.chris.chriswgutermtracker;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.chris.chriswgutermtracker.UI.CoursesAdapter;
-import com.chris.chriswgutermtracker.UI.TermsAdapter;
 import com.chris.chriswgutermtracker.ViewModel.CoursesViewModel;
 import com.chris.chriswgutermtracker.database.Course;
 import com.chris.chriswgutermtracker.databinding.ActivityCoursesBinding;
@@ -24,12 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.chris.chriswgutermtracker.utility.Constants.COURSE_ID_KEY;
-import static com.chris.chriswgutermtracker.utility.Constants.TERM_ID_FK_KEY;
 import static com.chris.chriswgutermtracker.utility.Constants.TERM_ID_KEY;
 
 public class CoursesActivity extends AppCompatActivity {
 
-    private RecyclerView rcCourses;
+    private RecyclerView rvCourses;
     private List<Course> courses = new ArrayList<>();
     private CoursesViewModel coursesViewModel;
     private CoursesAdapter coursesAdapter;
@@ -41,7 +36,7 @@ public class CoursesActivity extends AppCompatActivity {
      //   setContentView(R.layout.activity_courses);
         ActivityCoursesBinding binding = ActivityCoursesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        rcCourses = binding.recyclerViewCourses;
+        rvCourses = binding.recyclerViewCourses;
 
       //  Toolbar toolbar = binding.toolbar;
        // setSupportActionBar(toolbar);
@@ -70,10 +65,10 @@ public class CoursesActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rcCourses.setLayoutManager(layoutManager);
-        rcCourses.setHasFixedSize(true);
+        rvCourses.setLayoutManager(layoutManager);
+        rvCourses.setHasFixedSize(true);
         coursesAdapter = new CoursesAdapter(courses, this);
-        rcCourses.setAdapter(coursesAdapter);
+        rvCourses.setAdapter(coursesAdapter);
     }
 
     private void initViewModel() {
@@ -83,7 +78,7 @@ public class CoursesActivity extends AppCompatActivity {
             courses.addAll(newCourse);
             if(coursesAdapter == null){
                 coursesAdapter = new CoursesAdapter(courses, CoursesActivity.this);
-                rcCourses.setAdapter(coursesAdapter);
+                rvCourses.setAdapter(coursesAdapter);
             } else{
                 coursesAdapter.notifyDataSetChanged();
             }
@@ -106,4 +101,6 @@ public class CoursesActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+
 }
