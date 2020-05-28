@@ -9,24 +9,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CourseDetailActivity"
-            android:label="Course Details Editor" />
-        <activity android:name=".CoursesActivity"
-            android:label="Courses" />
+        <activity android:name=".NoteDetailActivity"
+            android:label="Note Details Editor"
+            />
+        <activity
+            android:name=".NotesActivity"
+            android:label="Notes"
+             />
+        <activity
+            android:name=".AssessmentDetailActivity"
+            android:label="Assessment Details Editor"
+             />
+        <activity
+            android:name=".AssessmentsActivity"
+            android:label="Assessments"
+             />
+        <activity
+            android:name=".CourseDetailActivity"
+            android:label="Course Details Editor"
+             />
+        <activity
+            android:name=".CoursesActivity"
+            android:label="Courses"
+             />
         <activity
             android:name=".TermDetailActivity"
-            android:label="Term Details Editor" />
+            android:label="Term Details Editor"
+             />
         <activity
             android:name=".TermsActivity"
             android:label="@string/title_activity_terms"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".utility.NotificationAlerts" />
+
     </application>
 
 </manifest>

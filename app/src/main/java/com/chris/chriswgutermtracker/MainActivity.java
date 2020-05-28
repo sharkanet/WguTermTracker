@@ -11,6 +11,8 @@ import android.widget.Button;
 import com.chris.chriswgutermtracker.database.WGUAppRepository;
 import com.chris.chriswgutermtracker.databinding.ActivityMainBinding;
 
+import static com.chris.chriswgutermtracker.utility.NotificationAlerts.createNotificationChannel;
+
 public class MainActivity extends AppCompatActivity {
     private Button btnToTerms;
     private Button btnResetToSample;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        createNotificationChannel(this);
         repo = WGUAppRepository.getInstance(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         btnToTerms = binding.btnToTerms;

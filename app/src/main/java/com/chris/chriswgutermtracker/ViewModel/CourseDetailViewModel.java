@@ -29,6 +29,7 @@ public class CourseDetailViewModel extends AndroidViewModel {
     public void loadCourse(int id){
         executor.execute(()->{
             Course courseEditing = repo.getCourseById(id);
+            //System.out.println(courseEditing);
             course.postValue(courseEditing);
         });
 

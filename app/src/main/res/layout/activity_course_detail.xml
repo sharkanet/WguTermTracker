@@ -32,9 +32,10 @@
         android:layout_marginStart="4dp"
         android:text="@string/coursetitle2"
         android:textSize="@dimen/detailsViewTextSize"
-        app:layout_constraintBottom_toBottomOf="@+id/text_course_detail_title_field"
 
-        app:layout_constraintStart_toStartOf="parent" />
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_course_detail_title_field" />
 
     <!--
     <TextView
@@ -68,10 +69,12 @@
         android:background="@null"
         android:hint="@string/coursetitle"
         android:importantForAutofill="no"
-        android:inputType="textCapWords"
+        android:inputType="textMultiLine"
         android:textSize="@dimen/detailsViewTextSize"
-        app:layout_constraintBottom_toTopOf="@+id/text_course_detail_start_field"
-        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
 
     <TextView
         android:id="@+id/text_course_detail_start_field"
@@ -87,8 +90,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.311"
         app:layout_constraintStart_toEndOf="@+id/text_course_detail_start"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintTop_toBottomOf="@+id/text_course_detail_title_field"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_course_detail_end"
