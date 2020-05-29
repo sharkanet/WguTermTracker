@@ -1,9 +1,6 @@
 package com.chris.chriswgutermtracker;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,15 +9,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.chris.chriswgutermtracker.ViewModel.NoteDetailViewModel;
 import com.chris.chriswgutermtracker.databinding.ActivityNoteDetailBinding;
-import com.chris.chriswgutermtracker.databinding.ActivityNotesBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.text.ParseException;
 
 import static com.chris.chriswgutermtracker.utility.Constants.COURSE_ID_KEY;
 import static com.chris.chriswgutermtracker.utility.Constants.NOTE_ID_KEY;
+import static com.chris.chriswgutermtracker.utility.Constants.NOTE_TEXT_KEY;
 
 public class NoteDetailActivity extends AppCompatActivity {
     private int noteId, courseIdFK;
@@ -106,10 +105,16 @@ public class NoteDetailActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.note_share:
                 // implement
-                //to do
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, noteTextField.getText().toString().trim());
+                intent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(intent, null);
+                startActivity(shareIntent);
                 return true;
             default:
-            return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
     }
 }

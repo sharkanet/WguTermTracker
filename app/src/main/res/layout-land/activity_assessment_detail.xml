@@ -22,22 +22,9 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
-    -->
-
-    <TextView
-        android:id="@+id/text_assessment_detail_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/recyclerViewCardMargins"
-        android:layout_marginStart="4dp"
-        android:text="@string/assessmenttitle2"
-        android:textSize="@dimen/detailsViewTextSize"
 
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_assessment_detail_title_field" />
 
-    <!--
     <TextView
         android:id="@+id/text_view_detail_separator"
         android:layout_width="wrap_content"
@@ -50,15 +37,28 @@
 -->
 
     <TextView
+        android:id="@+id/text_assessment_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+        android:text="@string/assessmenttitle2"
+        android:textSize="@dimen/detailsViewTextSize"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_assessment_detail_title_field" />
+
+    <TextView
         android:id="@+id/text_assessment_detail_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
-        android:layout_marginStart="4dp"
         android:text="@string/assessmentstart2"
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toBottomOf="@+id/text_assessment_detail_start_field"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_title" />
 
     <EditText
         android:id="@+id/text_assessment_detail_title_field"
@@ -74,7 +74,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_start_field"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.012" />
 
     <TextView
         android:id="@+id/text_assessment_detail_start_field"
@@ -88,26 +88,24 @@
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toEndOf="@+id/text_assessment_detail_end"
         app:layout_constraintTop_toBottomOf="@+id/text_assessment_detail_title_field"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.005" />
 
     <TextView
         android:id="@+id/text_assessment_detail_start_time_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
-        android:layout_marginBottom="10dp"
 
         android:hint="@string/assessmentstartTime"
         android:importantForAutofill="no"
         android:textSize="@dimen/detailsViewTextSize"
 
-        app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_start_field"
-        app:layout_constraintTop_toBottomOf="@id/text_assessment_detail_start_field"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_assessment_detail_start_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_assessment_detail_title_field" />
 
     <TextView
         android:id="@+id/text_assessment_detail_end"
@@ -117,7 +115,7 @@
         android:text="@string/assessmentend2"
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toBottomOf="@+id/text_assessment_detail_end_field"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_title" />
 
     <TextView
         android:id="@+id/text_assessment_detail_end_field"
@@ -128,8 +126,9 @@
 
         android:importantForAutofill="no"
         android:textSize="@dimen/detailsViewTextSize"
-        app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_start_time_field"
-        app:layout_constraintTop_toBottomOf="@+id/text_assessment_detail_start_time_field" />
+        app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_start_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_assessment_detail_start_field" />
+
     <TextView
         android:id="@+id/text_assessment_detail_end_time_field"
         android:layout_width="wrap_content"
@@ -139,8 +138,9 @@
 
         android:importantForAutofill="no"
         android:textSize="@dimen/detailsViewTextSize"
-        app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_end_field"
-        app:layout_constraintTop_toBottomOf="@+id/text_assessment_detail_end_field" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_assessment_detail_end_field"
+        app:layout_constraintTop_toBottomOf="@+id/text_assessment_detail_start_time_field" />
 
     <TextView
         android:id="@+id/text_assessment_status"
@@ -149,24 +149,25 @@
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:text="@string/assessmentstatus2"
         android:textSize="@dimen/detailsViewTextSize"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/text_assessment_detail_title"
         app:layout_constraintTop_toBottomOf="@+id/text_assessment_detail_end_time_field" />
 
 
     <EditText
         android:id="@+id/text_assessment_status_field"
-        android:layout_width="391dp"
-        android:layout_height="472dp"
+        android:layout_width="668dp"
+        android:layout_height="183dp"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:background="@null"
         android:hint="@string/assessment_status"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        android:maxLines="12"
+        android:maxLines="6"
         android:scrollHorizontally="false"
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toTopOf="@+id/fab_assessment_delete"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

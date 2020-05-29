@@ -28,9 +28,9 @@
     <string name="mentor_phone">Mentor Phone</string>
     <string name="mentor_name">Mentor Name</string>
     <string name="dash">-</string>
-    <string name="coursetitle2">courseTitle :</string>
-    <string name="coursestart2">courseStart :</string>
-    <string name="courseend2">courseEnd :</string>
+    <string name="coursetitle2">Course Title :</string>
+    <string name="coursestart2">Course Start :</string>
+    <string name="courseend2">Course End :</string>
     <string name="assessments">Assessments</string>
     <string name="notes">Notes</string>
     <string name="coursestatus2">Course Status :</string>
@@ -54,4 +54,8 @@
     <string name="noteTitle2">Note ID :</string>
     <string name="channel_name">Notifications</string>
     <string name="channel_description">Notifications</string>
+    <string name="terms_completed2">Terms Completed :</string>
+    <string name="terms_remaining2">Terms Remaining :</string>
+    <string name="terms_completed">Terms Completed</string>
+    <string name="terms_remaining">Terms Remaining</string>
 </resources>
