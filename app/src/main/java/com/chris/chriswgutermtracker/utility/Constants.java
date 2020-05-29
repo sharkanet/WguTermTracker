@@ -8,5 +8,7 @@ public class Constants {
     public static final String NOTE_ID_KEY = "note_id_key";
     public static final String NOTIFICATION_TEXT = "notification_text";
     public static final String NOTIFICATION_TITLE = "notification_title";
+    public static final String NOTE_TEXT_KEY = "note_text_key";
+
 
 }

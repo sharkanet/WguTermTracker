@@ -24,19 +24,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 -->
 
-    <TextView
-        android:id="@+id/text_term_detail_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/recyclerViewCardMargins"
-        android:layout_marginStart="4dp"
-
-        android:text="@string/termtitle2"
-        android:textSize="@dimen/detailsViewTextSize"
-        app:layout_constraintBottom_toBottomOf="@+id/text_term_detail_title_field"
-
-        app:layout_constraintStart_toStartOf="parent" />
-
     <!--
     <TextView
         android:id="@+id/text_view_detail_separator"
@@ -50,6 +37,21 @@
 -->
 
     <TextView
+        android:id="@+id/text_term_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/recyclerViewCardMargins"
+
+        android:layout_marginBottom="4dp"
+        android:text="@string/termtitle2"
+        android:textSize="@dimen/detailsViewTextSize"
+
+        app:layout_constraintBottom_toBottomOf="@+id/text_term_detail_title_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/text_term_detail_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,14 +60,13 @@
         android:text="@string/termstart2"
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toBottomOf="@+id/text_term_detail_start_field"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/text_term_detail_title" />
 
     <EditText
         android:id="@+id/text_term_detail_title_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
-        android:layout_marginBottom="4dp"
         android:background="@null"
         android:hint="@string/termtitle"
         android:importantForAutofill="no"
@@ -73,8 +74,8 @@
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toTopOf="@+id/text_term_detail_start_field"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
-        app:layout_constraintStart_toEndOf="@+id/text_term_detail_start" />
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="@+id/text_term_detail_title" />
 
     <TextView
         android:id="@+id/text_term_detail_start_field"
@@ -89,7 +90,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/text_term_detail_title_field"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintVertical_bias="0.119" />
 
     <TextView
         android:id="@+id/text_term_detail_end"
@@ -99,19 +100,19 @@
         android:text="@string/termend2"
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toBottomOf="@+id/text_term_detail_end_field"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/text_term_detail_start" />
 
     <TextView
         android:id="@+id/text_term_detail_end_field"
-        android:layout_width="74dp"
-        android:layout_height="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:layout_marginTop="4dp"
 
         android:hint="@string/termend"
         android:importantForAutofill="no"
         android:textSize="@dimen/detailsViewTextSize"
-        app:layout_constraintStart_toStartOf="@+id/text_term_detail_title_field"
+        app:layout_constraintStart_toStartOf="@+id/text_term_detail_start_field"
         app:layout_constraintTop_toBottomOf="@+id/text_term_detail_start_field" />
 
     <Button
