@@ -80,19 +80,21 @@
     <EditText
         android:id="@+id/text_note_text_field"
         android:layout_width="398dp"
-        android:layout_height="581dp"
+        android:layout_height="wrap_content"
+        android:minHeight="550dp"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:background="@null"
         android:hint="@string/noteText"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        android:maxLines="18"
+        android:maxLines="20"
         android:scrollHorizontally="false"
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toTopOf="@+id/fab_note_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_note_detail_title" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_note_save"

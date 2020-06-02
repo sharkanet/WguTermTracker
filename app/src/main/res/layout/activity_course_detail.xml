@@ -125,14 +125,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/text_course_status_field"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/text_course_status_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:background="@null"
         android:hint="@string/course_status"
-        android:importantForAutofill="no"
         android:inputType="textCapWords"
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintStart_toStartOf="@+id/text_course_detail_start_field"
