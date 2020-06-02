@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -40,7 +42,8 @@ public class CourseDetailActivity extends AppCompatActivity {
     public static final String NOTIFICATION = "notification_key";
     private int termIdFK, courseId;
     private TextView courseStart, courseEnd;
-    private EditText courseTitle, courseStatus, mentorName, mentorPhone, mentorEmail;
+    private EditText courseTitle, mentorName, mentorPhone, mentorEmail;
+    private AutoCompleteTextView courseStatus;
     private Button assessmentButton, noteButton;
     private FloatingActionButton fabSave, fabDelete;
     private Calendar calendarStart, calendarEnd;
@@ -59,7 +62,13 @@ public class CourseDetailActivity extends AppCompatActivity {
         courseEnd = binding.textCourseDetailEndField;
         courseStart = binding.textCourseDetailStartField;
         courseTitle = binding.textCourseDetailTitleField;
-        courseStatus= binding.textCourseStatusField;
+        courseStatus= (AutoCompleteTextView) binding.textCourseStatusField;
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, STATUS);
+        courseStatus.setAdapter(adapter);
+        courseStatus.setThreshold(0);
+
+
         mentorEmail = binding.textCourseMentorEmailField;
         mentorName = binding.textCourseMentorNameField;
         mentorPhone = binding.textCourseMentorPhoneField;
@@ -252,4 +261,8 @@ public class CourseDetailActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private final String[] STATUS = new String[] {
+            "In Progress" , "Completed" , "Dropped" , "Planned to take"
+    };
 }

@@ -156,7 +156,8 @@
     <EditText
         android:id="@+id/text_assessment_status_field"
         android:layout_width="668dp"
-        android:layout_height="183dp"
+        android:layout_height="wrap_content"
+        android:minHeight="150dp"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:background="@null"
         android:hint="@string/assessment_status"
@@ -168,7 +169,8 @@
         app:layout_constraintBottom_toTopOf="@+id/fab_assessment_delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_assessment_status" />
 
     <Button
         android:id="@+id/button_assessment_alert"

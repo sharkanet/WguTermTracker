@@ -2,12 +2,16 @@ package com.chris.chriswgutermtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -24,7 +28,7 @@ import static com.chris.chriswgutermtracker.utility.NotificationAlerts.createNot
 
 public class MainActivity extends AppCompatActivity {
     private Button btnToTerms;
-    private Button btnResetToSample;
+//    private Button btnResetToSample;
     private ActivityMainBinding binding;
     private WGUAppRepository repo;
     private MainActivityViewModel viewModel;
@@ -36,8 +40,16 @@ public class MainActivity extends AppCompatActivity {
         createNotificationChannel(this);
         repo = WGUAppRepository.getInstance(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
+        //  btnResetToSample = binding.btnPopulate;
+
         btnToTerms = binding.btnToTerms;
-        btnResetToSample = binding.btnPopulate;
+        Button btnResetToSample = new Button(this);
+        btnResetToSample.setText("Reset DB with sample data");
+        btnResetToSample.setY(400);
+        btnResetToSample.setGravity(Gravity.CENTER_VERTICAL);
+        ConstraintLayout layout = (ConstraintLayout) binding.getRoot();
+        layout.addView(btnResetToSample);
+
         termsCompleted = binding.termsCompletedField;
         termsRemaining = binding.termsRemainingField;
 //        btnToTerms = findViewById(R.id.btn_to_terms);

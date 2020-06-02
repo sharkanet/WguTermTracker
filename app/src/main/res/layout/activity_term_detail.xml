@@ -103,8 +103,8 @@
 
     <TextView
         android:id="@+id/text_term_detail_end_field"
-        android:layout_width="74dp"
-        android:layout_height="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:layout_marginTop="4dp"
 

@@ -82,7 +82,8 @@
     <EditText
         android:id="@+id/text_note_text_field"
         android:layout_width="661dp"
-        android:layout_height="303dp"
+        android:layout_height="wrap_content"
+        android:minHeight="250dp"
         android:layout_margin="@dimen/recyclerViewCardMargins"
         android:background="@null"
         android:hint="@string/noteText"
@@ -93,7 +94,8 @@
         android:textSize="@dimen/detailsViewTextSize"
         app:layout_constraintBottom_toTopOf="@+id/fab_note_delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_note_detail_title" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_note_save"
